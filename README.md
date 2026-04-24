@@ -1,12 +1,3 @@
-
-title: EPL Predictor API
-emoji: ⚽
-colorFrom: blue
-colorTo: green
-sdk: docker
-pinned: false
----
-
 # EPL Match Outcome Predictor
 
 A production-grade machine learning system that predicts English Premier League match outcomes and identifies value bets using ensemble modelling, ELO ratings, and live Bet365 odds.
