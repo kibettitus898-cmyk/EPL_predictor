@@ -1,4 +1,6 @@
 // src/app/results/page.tsx
+export const dynamic = "force-dynamic"  // ← add this at the top
+
 import { Suspense } from "react"
 import { api } from "@/lib/api"
 import { MatchCard } from "@/components/match/MatchCard"

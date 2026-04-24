@@ -1,4 +1,6 @@
 // src/app/upcoming/page.tsx
+export const dynamic = "force-dynamic"  // ← add this at the top
+
 import { Suspense } from "react"
 import { api } from "@/lib/api"
 import { Skeleton } from "@/components/ui/skeleton"
