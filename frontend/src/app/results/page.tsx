@@ -24,6 +24,7 @@ async function ResultsList() {
       prediction: await api
         .predict(m.home_team, m.away_team)
         .catch(() => null),
+      actual_result: m.ftr, 
     }))
   )
 

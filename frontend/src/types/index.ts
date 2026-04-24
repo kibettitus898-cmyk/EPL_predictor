@@ -77,4 +77,5 @@ export interface NormalizedFixture {
 // ResultMatch = HistoricalMatch + optional prediction
 export interface ResultMatch extends HistoricalMatch {
   prediction?: PredictionResponse | null
+  actual_result?: Outcome | null
 }
