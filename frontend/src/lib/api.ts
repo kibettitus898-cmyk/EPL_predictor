@@ -1,7 +1,8 @@
 // src/lib/api.ts
 import type { HistoricalMatch, UpcomingFixture, PredictionResponse } from "@/types"
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+// ← BASE must be declared before apiCall and api
+const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000"
 
 async function apiCall<T>(url: string, options?: RequestInit): Promise<T> {
   const res = await fetch(url, options)
@@ -20,14 +21,13 @@ export const api = {
     apiCall<{ status: string }>(`${BASE}/health`),
 
   getMatches: async (season?: string, limit = 50, offset = 0) => {
-  const raw = await apiCall<
-    HistoricalMatch[] | { count: number; data: HistoricalMatch[] }
-  >(
-    `${BASE}/api/v1/matches?limit=${limit}&offset=${offset}${season ? `&season=${season}` : ""}`
-  )
-  // Backend returns { count, data: [...] } — unwrap to plain array
-  return Array.isArray(raw) ? raw : raw.data ?? []
-},
+    const raw = await apiCall<
+      HistoricalMatch[] | { count: number; data: HistoricalMatch[] }
+    >(
+      `${BASE}/api/v1/matches?limit=${limit}&offset=${offset}${season ? `&season=${season}` : ""}`
+    )
+    return Array.isArray(raw) ? raw : raw.data ?? []
+  },
 
   predict: (
     home_team: string,
